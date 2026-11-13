@@ -1,0 +1,1502 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#211c3d">
+<title>A Little World for Chutki ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+ --pink:#f5a9c7;
+ --rose:#e77fa8;
+ --lilac:#c9b9f4;
+ --ink:#342b50;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+ font-family:'DM Sans',sans-serif;
+ background:#17152c;
+ color:white;
+ overflow-x:hidden;
+}
+
+button{font:inherit}
+
+/* BACKGROUND */
+
+#sky{
+ position:fixed;
+ inset:0;
+ z-index:-3;
+ background:
+ radial-gradient(ellipse at 15% 15%,#51406f,transparent 40%),
+ radial-gradient(ellipse at 85% 35%,#583e69,transparent 42%),
+ linear-gradient(155deg,#17152c,#282343 55%,#3c2b4e);
+}
+
+#stars{
+ position:absolute;
+ inset:0;
+ width:100%;
+ height:100%;
+}
+
+.aurora{
+ position:absolute;
+ width:70vw;
+ height:70vw;
+ border-radius:50%;
+ filter:blur(80px);
+ opacity:.16;
+ animation:aurora 18s ease-in-out infinite alternate;
+}
+
+.aurora.a{
+ background:#d78dbd;
+ top:-30%;
+ left:-20%;
+}
+
+.aurora.b{
+ background:#8e9be8;
+ right:-30%;
+ bottom:-40%;
+ animation-delay:-8s;
+}
+
+@keyframes aurora{
+ to{transform:translate(18vw,12vh) scale(1.25)}
+}
+
+/* PETALS */
+
+#petals,#sparkles{
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ z-index:20;
+ overflow:hidden;
+}
+
+.petal{
+ position:absolute;
+ top:-45px;
+ animation:petalFall linear forwards;
+}
+
+@keyframes petalFall{
+ 0%{transform:translateY(-5vh);opacity:0}
+ 10%{opacity:.9}
+ 100%{
+  transform:translate(var(--drift),110vh) rotate(680deg);
+  opacity:0;
+ }
+}
+
+/* COMMON */
+
+section{
+ min-height:100vh;
+ padding:90px 22px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ position:relative;
+}
+
+.wrap{
+ width:min(900px,100%);
+ margin:auto;
+ text-align:center;
+}
+
+.eyebrow{
+ font-size:.74rem;
+ letter-spacing:.24em;
+ text-transform:uppercase;
+ color:#f6c9dc;
+ font-weight:700;
+}
+
+h1,h2,.serif{
+ font-family:'Playfair Display',serif;
+ font-weight:500;
+}
+
+h1{
+ font-size:clamp(3rem,9vw,6.8rem);
+ line-height:1.02;
+ color:#fff7fb;
+ margin:20px 0;
+}
+
+h2{
+ font-size:clamp(2.2rem,6vw,4rem);
+ line-height:1.1;
+ margin:12px 0 18px;
+}
+
+p{line-height:1.8}
+
+.gradient-text{
+ background:linear-gradient(90deg,#ffd5e6,#f9d9ad,#d9d2ff);
+ -webkit-background-clip:text;
+ background-clip:text;
+ color:transparent;
+}
+
+.btn{
+ border:1px solid #ffffff65;
+ color:white;
+ background:linear-gradient(120deg,#d77fa8,#a58ad8);
+ padding:14px 23px;
+ border-radius:999px;
+ cursor:pointer;
+ box-shadow:0 12px 35px #09081755;
+ transition:.25s;
+ margin:10px;
+}
+
+.btn:hover{
+ transform:translateY(-4px);
+ box-shadow:0 17px 40px #09081777;
+}
+
+.secondary{
+ background:#ffffff17;
+}
+
+.glass{
+ background:rgba(255,255,255,.68);
+ backdrop-filter:blur(18px);
+ border:1px solid #fff9;
+ border-radius:28px;
+ box-shadow:0 22px 70px #100d2855;
+ color:#57475f;
+}
+
+/* WELCOME */
+
+.hero{min-height:100svh}
+
+.moon{
+ width:112px;
+ height:112px;
+ border-radius:50%;
+ margin:0 auto 28px;
+ background:radial-gradient(circle at 35% 35%,#fff9e8,#f6d5b2 55%,#e8a9ba);
+ box-shadow:0 0 25px #ffe5c7aa,0 0 90px #f5c3db66;
+ animation:moonFloat 4s ease-in-out infinite;
+ position:relative;
+}
+
+.moon:after{
+ content:"";
+ position:absolute;
+ width:100px;
+ height:100px;
+ border-radius:50%;
+ background:#29213f;
+ top:-15px;
+ right:-24px;
+}
+
+@keyframes moonFloat{
+ 50%{transform:translateY(-12px)}
+}
+
+.lead{
+ max-width:590px;
+ margin:20px auto;
+ color:#e7dced;
+ font-size:1.1rem;
+}
+
+.love-note{
+ font-family:'Playfair Display',serif;
+ font-style:italic;
+ color:#fff0f7;
+ font-size:1.25rem;
+ margin-top:25px;
+}
+
+.scroll-hint{
+ position:absolute;
+ bottom:24px;
+ color:#cfc1dc;
+ animation:bob 2s infinite;
+}
+
+@keyframes bob{
+ 50%{transform:translateY(7px)}
+}
+
+/* ENVELOPE */
+
+.envelope-area{
+ perspective:1000px;
+ margin:40px auto 20px;
+ width:min(340px,85vw);
+ height:230px;
+ position:relative;
+ cursor:pointer;
+ filter:drop-shadow(0 22px 22px #09081766);
+}
+
+.envelope{
+ position:absolute;
+ inset:25px 0 0;
+ background:linear-gradient(145deg,#f6c1d4,#d78eaf);
+ border-radius:12px;
+}
+
+.envelope:before{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:
+ linear-gradient(35deg,transparent 49%,#e9a8c1 50%) left bottom/50% 100% no-repeat,
+ linear-gradient(-35deg,transparent 49%,#e9a8c1 50%) right bottom/50% 100% no-repeat;
+}
+
+.flap{
+ position:absolute;
+ top:0;
+ left:0;
+ width:100%;
+ height:130px;
+ background:linear-gradient(145deg,#ffdeea,#eaa9c4);
+ clip-path:polygon(0 0,100% 0,50% 100%);
+ transform-origin:top;
+ transition:transform .9s;
+ z-index:4;
+}
+
+.seal{
+ position:absolute;
+ z-index:5;
+ top:80px;
+ left:50%;
+ transform:translateX(-50%);
+ font-size:2rem;
+}
+
+.envelope.open .flap{
+ transform:rotateX(180deg);
+ z-index:1;
+}
+
+.envelope-label{
+ position:absolute;
+ bottom:24px;
+ left:0;
+ right:0;
+ z-index:6;
+ color:#7c4263;
+ font-family:'Playfair Display',serif;
+ font-size:1.2rem;
+}
+
+.letter{
+ max-width:720px;
+ margin:28px auto;
+ padding:clamp(25px,5vw,48px);
+ text-align:left;
+ background:linear-gradient(145deg,#fffaf6,#fff0f4);
+ border-radius:8px 8px 25px 25px;
+ box-shadow:0 25px 75px #09081766;
+ color:#59485b;
+ display:none;
+ animation:letterRise 1s ease both;
+ position:relative;
+}
+
+.letter:before{
+ content:"";
+ position:absolute;
+ inset:12px;
+ border:1px solid #e8cbd5;
+ pointer-events:none;
+}
+
+.letter-inner{position:relative;z-index:1}
+
+.letter h3{
+ font-family:'Playfair Display',serif;
+ font-size:1.7rem;
+ font-weight:500;
+ color:#a85e84;
+ margin-bottom:20px;
+}
+
+.letter p{
+ margin-bottom:17px;
+ line-height:1.95;
+ font-size:1rem;
+}
+
+.letter .signoff{
+ font-family:'Playfair Display',serif;
+ font-size:1.4rem;
+ color:#a85e84;
+ margin-top:24px;
+}
+
+@keyframes letterRise{
+ from{opacity:0;transform:translateY(55px) scale(.96)}
+ to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+/* CARDS */
+
+.cards{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:15px;
+ margin:35px auto;
+}
+
+.reason{
+ padding:24px 18px;
+ min-height:175px;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ gap:12px;
+ color:#57475f;
+ transition:.35s;
+}
+
+.reason:hover{
+ transform:translateY(-9px) rotate(-1deg);
+}
+
+.emoji{font-size:2rem}
+
+.reason p{
+ margin:0;
+ font-size:.94rem;
+}
+
+/* HAPPINESS */
+
+.happy-box{
+ max-width:650px;
+ margin:30px auto;
+ padding:35px 25px;
+ min-height:190px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+}
+
+#happyMessage{
+ font-family:'Playfair Display',serif;
+ font-size:clamp(1.35rem,4vw,2rem);
+ color:#57415e;
+ transition:opacity .25s;
+}
+
+/* JAR */
+
+.jar-wrap{
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:30px;
+ flex-wrap:wrap;
+ margin:30px auto;
+}
+
+.jar{
+ width:170px;
+ height:205px;
+ border:4px solid #ffffffbd;
+ border-radius:25px 25px 48px 48px;
+ background:linear-gradient(135deg,#ffffff55,#f4c5e866);
+ box-shadow:inset 0 0 30px #fff9,0 20px 50px #0e0a2455;
+ display:grid;
+ place-items:center;
+ cursor:pointer;
+ transition:.35s;
+ position:relative;
+}
+
+.jar:before{
+ content:"";
+ position:absolute;
+ top:-17px;
+ width:95px;
+ height:20px;
+ border-radius:7px;
+ background:linear-gradient(90deg,#d8b9d8,#fff0fa,#c7acd4);
+ border:2px solid #fff9;
+}
+
+.jar span{
+ font-size:4.3rem;
+ animation:jarGlow 2s infinite alternate;
+}
+
+@keyframes jarGlow{
+ to{filter:drop-shadow(0 0 15px #ffe5a9);transform:scale(1.08)}
+}
+
+.jar:hover{transform:rotate(-5deg) scale(1.06)}
+
+.note-card{
+ max-width:390px;
+ min-height:155px;
+ padding:28px;
+ display:grid;
+ place-items:center;
+ font-family:'Playfair Display',serif;
+ font-size:1.25rem;
+ line-height:1.5;
+}
+
+/* HUG */
+
+.hug-bear{
+ font-size:clamp(5rem,16vw,9rem);
+ display:inline-block;
+ animation:bear 2.8s ease-in-out infinite;
+}
+
+@keyframes bear{
+ 0%,100%{transform:translateY(0) rotate(-4deg)}
+ 50%{transform:translateY(-13px) rotate(4deg) scale(1.05)}
+}
+
+.hug-message{
+ color:#f5e6f3;
+ max-width:550px;
+ margin:18px auto;
+}
+
+/* GIFT */
+
+.gift{
+ width:170px;
+ height:145px;
+ margin:45px auto 30px;
+ position:relative;
+ cursor:pointer;
+ transition:.4s;
+}
+
+.gift-box{
+ position:absolute;
+ bottom:0;
+ left:10px;
+ right:10px;
+ height:105px;
+ background:linear-gradient(120deg,#d985ac,#a987d0);
+ border-radius:8px;
+}
+
+.gift-box:before{
+ content:"";
+ position:absolute;
+ left:50%;
+ top:0;
+ bottom:0;
+ width:22px;
+ transform:translateX(-50%);
+ background:#ffe2ad;
+}
+
+.gift-lid{
+ position:absolute;
+ left:0;
+ right:0;
+ top:28px;
+ height:25px;
+ background:#f0a9c8;
+ border-radius:6px;
+ transition:.7s;
+ z-index:2;
+}
+
+.gift-lid:after{
+ content:"";
+ position:absolute;
+ width:48px;
+ height:30px;
+ border:9px solid #ffe2ad;
+ border-radius:50%;
+ left:35px;
+ top:-27px;
+}
+
+.gift.open .gift-lid{
+ transform:translate(-15px,-65px) rotate(-25deg);
+}
+
+.gift-reveal{
+ max-width:580px;
+ margin:auto;
+ padding:25px;
+ display:none;
+ animation:letterRise .8s both;
+}
+
+/* FINAL */
+
+.final h2{
+ color:#fff8fc;
+ font-size:clamp(2.7rem,8vw,5.5rem);
+}
+
+.final p{
+ color:#e5d9eb;
+ max-width:580px;
+ margin:20px auto;
+}
+
+.signature{
+ font-family:'Playfair Display',serif;
+ font-size:1.45rem;
+ color:#ffd8e8;
+ margin-top:35px;
+}
+
+/* SCROLL ANIMATIONS */
+
+.reveal{
+ opacity:0;
+ transform:translateY(35px);
+ transition:opacity .9s,transform .9s;
+}
+
+.reveal.visible{
+ opacity:1;
+ transform:translateY(0);
+}
+
+.music-toggle{
+ position:fixed;
+ right:17px;
+ top:17px;
+ z-index:30;
+ width:46px;
+ height:46px;
+ border-radius:50%;
+ border:1px solid #ffffff66;
+ background:#ffffff1c;
+ color:white;
+ cursor:pointer;
+ font-size:1.1rem;
+}
+
+footer{
+ text-align:center;
+ color:#c9b9d2;
+ padding:25px;
+ font-size:.78rem;
+}
+
+@media(max-width:650px){
+ section{padding:78px 18px;min-height:90svh}
+ .cards{grid-template-columns:1fr;max-width:420px}
+ .reason{min-height:125px}
+ .letter{padding:28px 24px}
+ .letter p{font-size:.96rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{
+  animation-duration:.01ms!important;
+  animation-iteration-count:1!important;
+  scroll-behavior:auto!important;
+  transition-duration:.01ms!important;
+ }
+}
+</style>
+</head>
+
+<body>
+
+<div id="sky">
+ <canvas id="stars"></canvas>
+ <div class="aurora a"></div>
+ <div class="aurora b"></div>
+</div>
+
+<div id="petals"></div>
+<div id="sparkles"></div>
+
+<button class="music-toggle" id="musicToggle">♫</button>
+
+<main>
+
+<!-- 1. WELCOME -->
+
+<section class="hero" id="home">
+ <div class="wrap">
+
+  <div class="moon"></div>
+
+  <div class="eyebrow">
+   A tiny little universe, made just for you
+  </div>
+
+  <h1>Oyeee, <span class="gradient-text">Chutkiii!</span></h1>
+
+  <p class="lead">
+   I made you a little something.
+   No pressure to smile, no need to pretend.
+   Just a few tiny reminders, wrapped up with lots of care. 🎀
+  </p>
+
+  <button class="btn" onclick="goTo('letterSection')">
+   Come in, pagal ladki ♡
+  </button>
+
+  <div class="love-note">
+   A little world for one very special human.
+  </div>
+
+ </div>
+
+ <div class="scroll-hint">SCROLL A LITTLE ↓</div>
+</section>
+
+
+<!-- 2. LETTER -->
+
+<section id="letterSection">
+ <div class="wrap reveal">
+
+  <div class="eyebrow">Sealed with extra affection</div>
+
+  <h2 class="gradient-text">A letter for you 💌</h2>
+
+  <p style="color:#d9cce4">
+   Some things are easier to say inside a letter.
+   Tap to open yours.
+  </p>
+
+  <div class="envelope-area" onclick="openLetter()">
+
+   <div class="envelope" id="envelope">
+
+    <div class="flap"></div>
+    <div class="seal">💗</div>
+
+    <div class="envelope-label">
+     To: My favourite pagal
+    </div>
+
+   </div>
+
+  </div>
+
+  <button class="btn secondary" onclick="openLetter()">
+   Open my letter ✨
+  </button>
+
+
+  <article class="letter" id="letter">
+
+   <div class="letter-inner">
+
+    <h3>Oyeee IOC 🤭🤭</h3>
+
+    <p>
+     <strong>Mera mtlbb Pagal ladkiii 🙄</strong><br>
+     Chutki 🎀❤️✨🪄⭐💫💖<br>
+     Merii pyaari bestfriend 🤭
+    </p>
+
+    <p>
+     I know aajkal tu acha feel nhi kar rhi,
+     bewajah anxious feel kar rhi aur reason bhi
+     pta nhi chal rha tujhe.
+    </p>
+
+    <p>
+     Koi baat nhi 🫂
+     <br><br>
+     Hota hai kabhi kabhi, humesha strong banke
+     thodi rehna hai, kabhi kabhi aise din bhi
+     aate hai jab kuch acha nhi lagta, itni tension
+     mt le pagal iss sab ki, and khudko blame mt
+     kar, its normal and jaldi sab theek ho jayega
+     ❤️✨
+    </p>
+
+    <p>
+     Tu sirf mere liye hi nhi, bahut logo ke liye
+     bahut special hai
+     <br><br>
+     Aur abhi bahut saari achii cheezein wait kar
+     rhi hai tera life mein 🤭
+    </p>
+
+    <p>
+     Apna time le, khudko shaant kar aur kabhi bhi
+     tujhe aisa lage ki tujhe kisi ki zarurat hai yaa
+     baat karni hai toh pagal main hu na tere saath 🫂
+    </p>
+
+    <p>
+     Aadhi raat ko bhi jaga skti hai tu mujhe😒
+    </p>
+
+    <p>
+     Main hu humesha tere saath, kuch bhi keh skti
+     hai mujhe, bestfriend hu tera
+    </p>
+
+    <p>
+     Apna dhyaan rkhiyoo pagal ladkiiii 🤭❤️
+    </p>
+
+    <div class="signoff">
+     — Tera bestfriend ♡
+    </div>
+
+   </div>
+
+  </article>
+
+ </div>
+</section>
+
+
+<!-- 3. REMINDERS -->
+
+<section>
+ <div class="wrap reveal">
+
+  <div class="eyebrow">A few gentle reminders</div>
+
+  <h2 class="gradient-text">
+   Things you should never forget 🌷
+  </h2>
+
+  <p style="color:#e4d7e9">
+   Just little truths for the days you need to hear them.
+  </p>
+
+  <div class="cards">
+
+   <div class="glass reason">
+    <div class="emoji">🌱</div>
+    <p>You don't have to bloom every single day. Rest is part of growing, too.</p>
+   </div>
+
+   <div class="glass reason">
+    <div class="emoji">🫶</div>
+    <p>You deserve the same kindness and patience that you give to everyone else.</p>
+   </div>
+
+   <div class="glass reason">
+    <div class="emoji">☁️</div>
+    <p>A cloudy day doesn't make the sky less beautiful. Neither does a difficult day change your worth.</p>
+   </div>
+
+  </div>
+ </div>
+</section>
+
+
+<!-- 4. HAPPINESS GENERATOR -->
+
+<section>
+ <div class="wrap reveal">
+
+  <div class="eyebrow">Press whenever you need one</div>
+
+  <h2 class="gradient-text">
+   A little pocket of sunshine ☀️
+  </h2>
+
+  <p style="color:#e4d7e9">
+   One click. One tiny reminder.
+  </p>
+
+  <div class="glass happy-box">
+   <div id="happyMessage">
+    You don't have to have it all figured out today. ♡
+   </div>
+  </div>
+
+  <button class="btn" onclick="newHappy()">
+   Another little reminder ✨
+  </button>
+
+ </div>
+</section>
+
+
+<!-- 5. JAR -->
+
+<section>
+ <div class="wrap reveal">
+
+  <div class="eyebrow">Open whenever you like</div>
+
+  <h2 class="gradient-text">
+   The jar of tiny joys 🫙
+  </h2>
+
+  <p style="color:#e4d7e9">
+   Pick a little star from the jar.
+  </p>
+
+  <div class="jar-wrap">
+
+   <div class="jar" onclick="pickNote()">
+    <span>🌟</span>
+   </div>
+
+   <div class="glass note-card" id="jarNote">
+    Your tiny note is waiting here.
+    Tap the jar! 💗
+   </div>
+
+  </div>
+
+  <button class="btn secondary" onclick="pickNote()">
+   Pick another note 💌
+  </button>
+
+ </div>
+</section>
+
+
+<!-- 6. HUG -->
+
+<section>
+ <div class="wrap reveal">
+
+  <div class="eyebrow">
+   A hug, with zero explanations required
+  </div>
+
+  <h2 class="gradient-text">
+   Come here, Chutki 🫂
+  </h2>
+
+  <div class="hug-bear" id="bear">🧸</div>
+
+  <p class="hug-message" id="hugText">
+   No questions. No need to explain anything.
+   Just a big, warm, squeeze-you-tight kind of hug.
+  </p>
+
+  <button class="btn" onclick="giveHug()">
+   Accept hug 🫂
+  </button>
+
+ </div>
+</section>
+
+
+<!-- 7. SURPRISE GIFT -->
+
+<section>
+ <div class="wrap reveal">
+
+  <div class="eyebrow">One last little surprise</div>
+
+  <h2 class="gradient-text">
+   There's a tiny gift for you 🎁
+  </h2>
+
+  <p style="color:#e4d7e9">
+   Go on. You know you want to open it. 🤭
+  </p>
+
+  <div class="gift" id="gift" onclick="openGift()">
+
+   <div class="gift-lid"></div>
+   <div class="gift-box"></div>
+
+  </div>
+
+  <div class="glass gift-reveal" id="giftReveal">
+
+   <div style="font-size:2.3rem">
+    🌷✨💖
+   </div>
+
+   <h2 style="font-size:2rem;color:#a85e84">
+    A reminder, just for you
+   </h2>
+
+   <p>
+    You matter. You are appreciated.
+    You don't have to be cheerful every day
+    to be loved and valued.
+    Take things one moment at a time, okay?
+   </p>
+
+   <p>
+    And please keep being your wonderfully
+    pagal self. 🤭
+   </p>
+
+  </div>
+
+ </div>
+</section>
+
+
+<!-- 8. ENDING -->
+
+<section class="final">
+
+ <div class="wrap reveal">
+
+  <div class="eyebrow">
+   Whenever you need a little reminder
+  </div>
+
+  <h2>
+   One day at a time,<br>
+   <span class="gradient-text">meri Chutki.</span>
+  </h2>
+
+  <p>
+   I hope life surprises you with soft mornings,
+   unexpected laughs, favourite songs,
+   silly conversations and countless little
+   reasons to smile again.
+  </p>
+
+  <p>
+   And on the days when it doesn't,
+   please be gentle with yourself.
+  </p>
+
+  <div style="font-size:2rem">♡</div>
+
+  <div class="signature">
+   Your bestfriend, always. ❤️
+  </div>
+
+  <button class="btn secondary"
+   onclick="goTo('home')">
+   Let's start again ☀️
+  </button>
+
+ </div>
+
+</section>
+
+</main>
+
+<footer>
+ MADE WITH A LOT OF CARE,
+ A LITTLE DRAMA & INFINITE BESTFRIEND ENERGY ♡
+</footer>
+
+
+<script>
+
+// ======================================
+// 1. NAVIGATION
+// ======================================
+
+function goTo(id){
+ document.getElementById(id).scrollIntoView({
+  behavior:'smooth'
+ });
+}
+
+
+// ======================================
+// 2. FLOATING FLOWERS
+// ======================================
+
+const petals=['🌸','🌷','✿','💗','✨','🌼'];
+
+function makePetal(){
+
+ const p=document.createElement('span');
+
+ p.className='petal';
+
+ p.textContent=
+ petals[Math.floor(Math.random()*petals.length)];
+
+ p.style.left=Math.random()*100+'vw';
+
+ p.style.fontSize=
+ (12+Math.random()*17)+'px';
+
+ p.style.animationDuration=
+ (8+Math.random()*9)+'s';
+
+ p.style.setProperty(
+  '--drift',
+  (Math.random()*180-90)+'px'
+ );
+
+ document.getElementById('petals')
+ .appendChild(p);
+
+ setTimeout(()=>p.remove(),18000);
+}
+
+setInterval(makePetal,650);
+
+
+// ======================================
+// 3. TWINKLING STARS
+// ======================================
+
+const canvas=document.getElementById('stars');
+const ctx=canvas.getContext('2d');
+
+let stars=[];
+
+function resizeStars(){
+
+ const dpr=Math.min(devicePixelRatio||1,2);
+
+ canvas.width=innerWidth*dpr;
+ canvas.height=innerHeight*dpr;
+
+ canvas.style.width=innerWidth+'px';
+ canvas.style.height=innerHeight+'px';
+
+ ctx.setTransform(dpr,0,0,dpr,0,0);
+
+ stars=Array.from({
+  length:Math.min(180,
+  Math.floor(innerWidth*innerHeight/6500))
+ },()=>({
+  x:Math.random()*innerWidth,
+  y:Math.random()*innerHeight,
+  r:Math.random()*1.5+.25,
+  a:Math.random(),
+  s:Math.random()*.018+.004
+ }));
+
+}
+
+function drawStars(){
+
+ ctx.clearRect(0,0,innerWidth,innerHeight);
+
+ stars.forEach(s=>{
+
+  s.a+=s.s;
+
+  if(s.a>1||s.a<.12){
+   s.s*=-1;
+  }
+
+  ctx.beginPath();
+
+  ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+
+  ctx.fillStyle=
+  `rgba(255,239,249,${s.a})`;
+
+  ctx.fill();
+
+ });
+
+ requestAnimationFrame(drawStars);
+}
+
+resizeStars();
+
+window.addEventListener('resize',resizeStars);
+
+drawStars();
+
+
+// ======================================
+// 4. SCROLL REVEAL
+// ======================================
+
+const observer=new IntersectionObserver(entries=>{
+
+ entries.forEach(e=>{
+
+  if(e.isIntersecting){
+
+   e.target.classList.add('visible');
+
+   observer.unobserve(e.target);
+
+  }
+
+ });
+
+},{threshold:.12});
+
+document.querySelectorAll('.reveal').forEach(el=>{
+ observer.observe(el);
+});
+
+
+// ======================================
+// 5. OPEN LETTER
+// ======================================
+
+let letterOpened=false;
+
+function openLetter(){
+
+ if(letterOpened){
+
+  document.getElementById('letter')
+  .scrollIntoView({behavior:'smooth'});
+
+  return;
+ }
+
+ letterOpened=true;
+
+ document.getElementById('envelope')
+ .classList.add('open');
+
+ setTimeout(()=>{
+
+  const letter=document.getElementById('letter');
+
+  letter.style.display='block';
+
+  letter.scrollIntoView({
+   behavior:'smooth',
+   block:'center'
+  });
+
+  burst(innerWidth/2,innerHeight/2);
+
+ },650);
+
+}
+
+// ======================================
+// 6. HAPPINESS GENERATOR
+// EDIT THESE MESSAGES YOURSELF
+// ======================================
+
+const happyMessages=[
+
+ "You don't have to have it all figured out today. ♡",
+
+ "Rest is not falling behind. Take care of yourself.",
+
+ "You are allowed to have a quiet day. No guilt, okay?",
+
+ "Even on your low-energy days, you are still wonderful.",
+
+ "Little by little is still a way forward. 🌷",
+
+ "You deserve kindness, especially from yourself.",
+
+
+ "A difficult chapter is not the whole story.",
+
+ "You don't need a reason to take a break. 🫶",
+
+ "Sending one pocket-sized sunshine and one very big hug. ☀️",
+
+ "You are more than what you get done in a day."
+
+];
+
+let happyIndex=-1;
+
+function newHappy(){
+
+ let i;
+
+ do{
+
+  i=Math.floor(Math.random()*happyMessages.length);
+
+}while(i===happyIndex && happyMessages.length>1);
+
+ happyIndex=i;
+
+ const el=document.getElementById('happyMessage');
+
+ el.style.opacity=0;
+
+ setTimeout(()=>{
+
+  el.textContent=happyMessages[i];
+
+  el.style.opacity=1;
+
+ },220);
+
+ burst(innerWidth/2,innerHeight/2);
+
+}
+
+
+// ======================================
+// 7. JAR NOTES
+// ADD YOUR OWN NOTES HERE
+// ======================================
+
+const notes=[
+
+ "You make the world around you a little more interesting just by being you. 🎀",
+
+ "You deserve the care you so easily give to other people.",
+
+ "You can take a break. The world can wait a minute.",
+
+ "I hope you get to laugh until your cheeks hurt very soon.",
+
+ "You are not a burden for needing a little support.",
+
+ "Your pace is allowed to be different from everyone else's.",
+
+ "Aaj bas apna dhyaan rakhna. Baaki sab baad mein. 🫂",
+
+ "You don't always have to be strong. You're human, silly.",
+
+ "May something unexpectedly lovely find its way to you today.",
+
+ "You are appreciated more than you know. ❤️"
+
+];
+
+let noteIndex=-1;
+
+function pickNote(){
+
+ let i;
+
+ do{
+
+  i=Math.floor(Math.random()*notes.length);
+
+ }while(i===noteIndex && notes.length>1);
+
+ noteIndex=i;
+
+ const el=document.getElementById('jarNote');
+
+ el.textContent=notes[i];
+
+ el.animate([
+
+  {transform:'rotate(2deg) scale(.9)',opacity:0},
+
+  {transform:'rotate(0) scale(1)',opacity:1}
+
+],{
+
+  duration:450,
+
+  easing:'ease-out'
+
+ });
+
+ burst(innerWidth/2,innerHeight/2);
+
+}
+
+
+// ======================================
+// 8. VIRTUAL HUG
+// ======================================
+
+function giveHug(){
+
+document.getElementById('bear').animate([
+
+  {transform:'scale(1)'},
+
+  {transform:'scale(1.3) rotate(-8deg)'},
+
+  {transform:'scale(1.08) rotate(5deg)'},
+
+  {transform:'scale(1)'}
+
+ ],{
+
+  duration:1000
+
+ });
+
+ document.getElementById('hugText').textContent=
+
+ 'HUG DELIVEREDDD! 🫂 Consider this a long one. No returning it. Bestfriend rules. 😤❤️';
+
+ burst(innerWidth/2,innerHeight/2);
+
+}
+// ======================================
+// 9. SURPRISE GIFT
+// ======================================
+
+let giftOpened=false;
+
+function openGift(){
+
+ if(giftOpened)return;
+
+ giftOpened=true;
+
+ document.getElementById('gift')
+ .classList.add('open');
+
+ setTimeout(()=>{
+
+  const reveal=document.getElementById('giftReveal');
+
+  reveal.style.display='block';
+
+  reveal.scrollIntoView({
+   behavior:'smooth',
+   block:'center'
+  });
+
+burst(innerWidth/2,innerHeight/2);
+
+ },450);
+
+}
+
+
+// ======================================
+// 10. SPARKLE EFFECT
+// ======================================
+
+function burst(x,y){
+
+ const layer=document.getElementById('sparkles');
+
+ for(let i=0;i<18;i++){
+
+  const s=document.createElement('span');
+
+  s.className='spark';
+
+  s.textContent=['✦','✧','♡','✨'][i%4];
+
+s.style.left=x+'px';
+  s.style.top=y+'px';
+
+  const angle=Math.PI*2*i/18;
+
+  const dist=35+Math.random()*65;
+
+  s.style.setProperty(
+   '--x',
+   Math.cos(angle)*dist+'px'
+  );
+
+  s.style.setProperty(
+   '--y',
+   Math.sin(angle)*dist+'px'
+  );
+
+  layer.appendChild(s);
+
+  setTimeout(()=>s.remove(),900);
+
+ }
+
+}
+// ======================================
+// 11. OPTIONAL GENTLE CHIMES
+// ======================================
+
+let audioCtx=null;
+let musicOn=false;
+let chimeTimer=null;
+
+function chime(){
+
+ if(!musicOn||!audioCtx)return;
+
+ const now=audioCtx.currentTime;
+
+ [523.25,659.25,783.99].forEach((freq,i)=>{
+
+  const osc=audioCtx.createOscillator();
+
+  const gain=audioCtx.createGain();
+
+  osc.type='sine';
+
+  osc.frequency.value=freq;
+
+  gain.gain.setValueAtTime(
+   .0001,now+i*.16
+
+);
+
+  gain.gain.exponentialRampToValueAtTime(
+   .025,now+i*.16+.04
+  );
+
+  gain.gain.exponentialRampToValueAtTime(
+   .0001,now+i*.16+.8
+  );
+
+  osc.connect(gain);
+
+  gain.connect(audioCtx.destination);
+
+  osc.start(now+i*.16);
+
+  osc.stop(now+i*.16+.85);
+
+ });
+
+}
+
+document.getElementById('musicToggle')
+.addEventListener('click',async()=>{
+
+if(!audioCtx){
+
+  audioCtx=new(
+   window.AudioContext||
+   window.webkitAudioContext
+  )();
+
+ }
+
+ if(audioCtx.state==='suspended'){
+  await audioCtx.resume();
+ }
+
+ musicOn=!musicOn;
+
+ document.getElementById('musicToggle')
+ .textContent=musicOn?'♫':'♪';
+
+ if(musicOn){
+
+  chime();
+
+  chimeTimer=setInterval(chime,6500);
+
+ }else{
+
+  clearInterval(chimeTimer);
+
+ }
+});
+
+</script>
+
+</body>
+</html>
